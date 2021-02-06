@@ -30,18 +30,20 @@ RESOLUTION = None   # camera.MAX_RESOLUTION if set to "None".
                     # (4056, 3040) for hi-res camera
 SCREEN_DIMS = (1352, 640) #  # Dimension of live preview, e.g. (1920,1080)
 IMG_LOCATION = '/home/pi/Pictures'
+
 # Set up which pins to use for LED and buttons
 led = LED(17)
 button = Button(23) # trigger button
 button2 = Button(25, hold_time=2) # exit button
 
-# workaround for using a button to kill the signal.pause()
+# Workaround for using a button to kill the signal.pause()
 # https://www.raspberrypi.org/forums/viewtopic.php?t=268903
 # Handler for SIGUSER1
 def handleSignal(num, stack):
   #print('Got signal! And now we mysteriously will exit....')
   pass # we don't really need to do anything with this, just avoid error mess.
-  
+
+# define the signal:  
 signal.signal(signal.SIGUSR1, handleSignal)
 
 def take_picture():
@@ -57,10 +59,10 @@ def take_picture():
     camera.capture(img_path)
     led.off    
     print('Image saved as : {}'.format(img_path))
-
+    
 def stop_program():
     """Close the program to get rid of video overlay"""
-    print('Stop button pressed')
+    print('Stop button pressed. Exiting...')
     # sys.exit(0)
     os.kill(os.getpid(), signal.SIGUSR1)
     
