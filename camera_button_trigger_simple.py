@@ -23,7 +23,7 @@ a picture at the highest resolution.
 Needs to be stopped either by pressing the stop button, or by stopping 
 the python process (CTRL-D, or kill the process in ssh session)
 
-Armin H., 2021
+Armin H., 02-2021
 """
 
 RESOLUTION = None   # camera.MAX_RESOLUTION if set to "None". 

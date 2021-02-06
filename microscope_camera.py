@@ -5,10 +5,14 @@ NOT READY YET. GOAL: to use buttons to control the raspberry pi camera
 while it is mounted on my stereo-microscope.
 
 Button 1: Aquire image (photo mode)/ Start video (video mode)
-Button 2: Change modes (photo <-> video)
+Button 2: Change modes (photo <-> video) 
 Button 3: Exit program on long press
 
+"camera_button_trigger_simple.py" does a similar job, with only two buttons, 
+and only for taking pictures. This script is an attempt to add video 
+capabilities.
 
+Armin, Feb.2021
 """
 
 import os, sys
