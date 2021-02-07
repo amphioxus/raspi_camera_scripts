@@ -54,10 +54,9 @@ def take_picture():
     timestamp=datetime.now().isoformat()
     img_name = 'image_'+str(timestamp)+'.jpg'
     img_path = os.path.join(IMG_LOCATION, img_name)
-    
-    led.on        
+    led.on()        
     camera.capture(img_path)
-    led.off    
+    led.off()  
     print('Image saved as : {}'.format(img_path))
     
 def stop_program():
@@ -77,7 +76,6 @@ else:
 camera.start_preview(resolution=SCREEN_DIMS, fullscreen=True)
 
 button.when_pressed = take_picture
-
 button2.when_held = stop_program
 
 signal.pause()
