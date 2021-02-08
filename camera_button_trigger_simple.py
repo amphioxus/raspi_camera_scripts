@@ -28,7 +28,7 @@ Armin H., 02-2021
 
 RESOLUTION = None   # camera.MAX_RESOLUTION if set to "None". 
                     # (4056, 3040) for hi-res camera
-SCREEN_DIMS = (1352, 640) #  # Dimension of live preview, e.g. (1920,1080)
+SCREEN_DIMS = (1920, 1080) #  # Dimension of live preview, e.g. (1920,1080)
 IMG_LOCATION = '/home/pi/Pictures'
 
 # Set up which pins to use for LED and buttons
@@ -64,7 +64,11 @@ def stop_program():
     print('Stop button pressed. Exiting...')
     # sys.exit(0)
     os.kill(os.getpid(), signal.SIGUSR1)
-    
+
+print('Starting Simple Microscope Camera')
+print('Press trigger button to take photo.')
+print('Hold exit button to stop program.')
+
 # set up the camera        
 camera = picamera.PiCamera()
 if not RESOLUTION:
