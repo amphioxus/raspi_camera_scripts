@@ -34,8 +34,8 @@ IMG_LOCATION = '/home/pi/Pictures'
 
 # Set up which pins to use for LED and buttons
 led = LED(17)
-button = Button(23, bounce_time=1) # trigger button
-button2 = Button(24, hold_time=1.5) # exit button
+button = Button(23, bounce_time=.5) # trigger button
+button2 = Button(24, hold_time=1) # exit button
 
 # Workaround for using a button to kill the signal.pause()
 # https://www.raspberrypi.org/forums/viewtopic.php?t=268903
@@ -70,7 +70,7 @@ def take_picture():
 def stop_program():
     """Close the program to get rid of video overlay"""
     print('Stop button pressed. Exiting...')
-    blink_led(4, 0.25)
+    blink_led(6, 0.1)
     os.kill(os.getpid(), signal.SIGUSR1)
 
 print('Starting Simple Microscope Camera')
