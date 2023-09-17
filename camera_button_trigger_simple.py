@@ -16,11 +16,11 @@ Two buttons and one LED are used:
 * stop button
 * indicator LED
 
-When the script is started, a preview window is opened. Pressing the 
-trigger button takes 
+When the script is started, a preview window is opened. Pressing the
+trigger button takes
 a picture at the highest resolution.
 
-Needs to be stopped either by pressing the stop button, or by stopping 
+Needs to be stopped either by pressing the stop button, or by stopping
 the python process (CTRL-D, or kill the process in ssh session)
 
 Armin H., 02-2021
@@ -34,7 +34,7 @@ IMG_LOCATION = '/home/pi/Pictures'
 # Set up which pins to use for LED and buttons
 led = LED(17)
 button = Button(23) # trigger button
-button2 = Button(25, hold_time=2) # exit button
+button2 = Button(24, hold_time=2) # exit button
 
 # Workaround for using a button to kill the signal.pause()
 # https://www.raspberrypi.org/forums/viewtopic.php?t=268903
@@ -43,7 +43,7 @@ def handleSignal(num, stack):
   #print('Got signal! And now we mysteriously will exit....')
   pass # we don't really need to do anything with this, just avoid error mess.
 
-# define the signal:  
+# define the signal:
 signal.signal(signal.SIGUSR1, handleSignal)
 
 def take_picture():
@@ -54,9 +54,9 @@ def take_picture():
     timestamp=datetime.now().isoformat()
     img_name = 'image_'+str(timestamp)+'.jpg'
     img_path = os.path.join(IMG_LOCATION, img_name)
-    led.on()        
+    led.on()
     camera.capture(img_path)
-    led.off()  
+    led.off()
     print('Image saved as : {}'.format(img_path))
     
 def stop_program():
@@ -69,7 +69,7 @@ print('Starting Simple Microscope Camera')
 print('Press trigger button to take photo.')
 print('Hold exit button to stop program.')
 
-# set up the camera        
+# set up the camera
 camera = picamera.PiCamera()
 if not RESOLUTION:
     camera.resolution = camera.MAX_RESOLUTION
