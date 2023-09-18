@@ -33,7 +33,7 @@ SCREEN_DIMS = (1920, 1080) #  # Dimension of live preview, e.g. (1920,1080)
 IMG_LOCATION = '/home/pi/Pictures'
 
 # Set up which pins to use for LED and buttons
-led = LED(17)
+led = LED(18)
 button = Button(23, bounce_time=.5) # trigger button
 button2 = Button(24, hold_time=1) # exit button
 
